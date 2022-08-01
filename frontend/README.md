@@ -3,6 +3,20 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 I've decided to use CRA in order to save time with the initial project setup.
 
+## Libraries Used
+
+This project uses the following set of libraries:
+
+- **React**: As the frontend visualization framework.
+- **Redux**: For global state management.
+- **Jest**: As the test runner.
+- **Testing Library**: Utility library to make easier write tests that resemble how the app is going to be used.
+- **TypeScript**: For type safety and it's useful as documentation and to reduce the ammount of tests needed.
+- **Axios**: For REST API handling, it's like the native *Fetch API* but on steroids.
+- **ESLint**: As the linter. For static analysis of code and to enforce consistent code style in the app.
+- **Prettier**: For enhanced code formatting.
+
+
 ## Available Scripts
 
 In the project directory, you can run:

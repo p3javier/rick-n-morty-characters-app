@@ -1,0 +1,75 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "jest": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:testing-library/react",
+        "plugin:prettier/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+      "react",
+      "@typescript-eslint",
+      "testing-library",
+      "prettier"
+    ],
+    "rules": {
+        "indent": [
+            "off",
+            2,
+            { "SwitchCase": 1 }
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "double"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "array-callback-return": "error",
+        "arrow-spacing": [
+            "error",
+            {
+                "after": true,
+                "before": true
+            }
+        ],
+        "block-scoped-var": "error",
+        "complexity": "error",
+        "consistent-return": ["error", {"treatUndefinedAsUnspecified": true}],
+        "eqeqeq": "error",
+        "guard-for-in": "error",
+        "id-length": "error",
+        "init-declarations": "error",
+        "prefer-arrow-callback": "error",
+        "block-spacing": "error",
+        "brace-style": "error",
+        "max-len": ["error", { "code": 120, "ignoreStrings": true }],
+        "no-duplicate-imports": "error",
+        "no-unmodified-loop-condition": "error",
+        "no-use-before-define": "error",
+        "camelcase": "error"
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    }
+  }
