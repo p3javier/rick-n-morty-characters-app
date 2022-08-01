@@ -3,22 +3,11 @@ import "./styles/App.css";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login/Login";
-
-const setToken = (userToken: object) => {
-  sessionStorage.setItem("token", JSON.stringify(userToken));
-};
-
-const getToken = () => {
-  const tokenString = sessionStorage.getItem("token");
-  if (tokenString) {
-    const userToken = JSON.parse(tokenString);
-    return userToken?.token;
-  }
-};
+import { useToken } from "./hooks/useToken";
 
 const App = () => {
-  const token = getToken();
-  console.log("token", token);
+  const { token, setToken } = useToken();
+
   if (!token) {
     return <Login setToken={setToken} />;
   }
@@ -28,6 +17,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -2,14 +2,18 @@ import React, { SyntheticEvent, useState } from "react";
 import "./styles/Login.css";
 import { loginUser } from "../../services/loginUser/loginUser";
 
-const Login = ({
-  setToken,
-}: {
-  setToken: React.Dispatch<React.SetStateAction<object>>;
-}) => {
+const Login = (props: any) => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-
+  const {
+    setToken,
+  }: {
+    setToken: React.Dispatch<
+      React.SetStateAction<{
+        token: string;
+      }>
+    >;
+  } = props;
   const handleSubmit = async (event: SyntheticEvent) => {
     event.preventDefault();
     const token = await loginUser({
