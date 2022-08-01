@@ -7,7 +7,7 @@ const Login = ({
 }) => {
   console.log(setToken);
   return (
-    <div className="login-wrapper">
+    <div className="login-wrapper container">
       <h1>Please Log In</h1>
       <form>
         <label>
