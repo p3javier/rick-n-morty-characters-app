@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import User from "./models/user.model";
+import jwt from "jsonwebtoken";
 const app = express();
 const port = process.env.PORT || 8080;
 app.use(cors());
@@ -32,12 +33,18 @@ app.post("/api/login", async (req, res) => {
     });
 
     if (user) {
-      return res.json({ status: "ok", user: true });
+      const token = jwt.sign(
+        {
+          email: email,
+        },
+        "secret123"
+      );
+      return res.json({ loginStatus: "ok", user: token });
     }
 
-    return res.json({ status: "error", user: false });
+    return res.json({ loginStatus: "error", user: false });
   } catch (error) {
-    return res.json({ status: "error", description: error });
+    return res.json({ loginStatus: "error", description: error });
   }
 });
 
