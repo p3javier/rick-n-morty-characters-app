@@ -1,7 +1,13 @@
 {
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.18.1"
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.5.0",
+    "nodemon": "^2.0.19",
+    "prettier": "^2.7.1",
+    "prettier-eslint": "^15.0.1"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.3",
@@ -19,7 +25,6 @@
     "lint:fix": "eslint . --fix",
     "build": "tsc --build",
     "clean": "tsc --build --clean",
-    "dev": "ts-node src/server.ts"
-    
+    "dev": "nodemon src/server.ts"
   }
 }
