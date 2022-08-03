@@ -1,8 +1,13 @@
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
-import User from "./models/user.model";
 import jwt from "jsonwebtoken";
+import {
+  registerController,
+  loginController,
+  findUserController,
+} from "./controllers/registerController/userControllers";
+
 const app = express();
 const port = process.env.PORT || 8080;
 const APP_SECRET = process.env.SECRET || "tesst123";
@@ -14,12 +19,11 @@ mongoose.connect("mongodb://localhost:27017/rick-and-morty-auth");
 app.post("/api/register", async (req, res) => {
   const { name, email, password } = req.body;
   try {
-    await User.create({
-      name: name,
-      email: email,
-      password: password,
-    });
-    return res.json({ status: "ok" });
+    const response = await registerController(name, email, password);
+    if (response.status === "ok") {
+      return res.json({ status: "ok" });
+    }
+    return res.json({ status: "error", description: response.description });
   } catch (error) {
     return res.json({ status: "error" });
   }
@@ -28,12 +32,9 @@ app.post("/api/register", async (req, res) => {
 app.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
   try {
-    const user = await User.findOne({
-      email: email,
-      password: password,
-    });
+    const isUser = await loginController(email, password);
 
-    if (user) {
+    if (isUser) {
       const token = jwt.sign(
         {
           email: email,
@@ -61,9 +62,7 @@ app.post("/api/login-check", async (req, res) => {
     const { email } = jwt.verify(token, APP_SECRET);
 
     if (email) {
-      const user = await User.findOne({
-        email: email,
-      });
+      const user = await findUserController(email);
 
       if (user) {
         return res.json({ loginStatus: "ok", user: token });
