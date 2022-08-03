@@ -1,4 +1,6 @@
 import User from "../../models/user.model";
+import bcrypt from "bcryptjs";
+
 const registerController: (
   name: string,
   email: string,
@@ -8,10 +10,13 @@ const registerController: (
   description?: string;
 }> = async (name, email, password) => {
   try {
+    const salt = bcrypt.genSaltSync(10);
+    const hashedPassword = bcrypt.hashSync(password, salt);
+
     await User.create({
       name: name,
       email: email,
-      password: password,
+      password: hashedPassword,
     });
     return { status: "ok" };
   } catch (error) {
@@ -22,10 +27,18 @@ const registerController: (
 const loginController = async (email: string, password: string) => {
   const user = await User.findOne({
     email: email,
-    password: password,
   });
 
-  if (user) return true;
+  if (user) {
+    if (user.password) {
+      return bcrypt.compareSync(password, user.password);
+    }
+    console.error(
+      "Something went worng, there is no password for this user. Probably this is a bug!"
+    );
+    return false;
+  }
+  console.error("User doesn't exists in the database.");
   return false;
 };
 
