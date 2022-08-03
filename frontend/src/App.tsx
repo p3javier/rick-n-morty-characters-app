@@ -35,7 +35,7 @@ const App = () => {
           {isAuthenticated ? <Redirect to="/dashboard" /> : <LandingPage />}
         </Route>
         <Route path="/dashboard" exact>
-          <RequireAuth>
+          <RequireAuth setToken={setToken}>
             <Dashboard />
           </RequireAuth>
         </Route>

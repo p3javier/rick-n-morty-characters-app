@@ -5,8 +5,10 @@ import InputBase from "../../components/InputBase/InputBase";
 
 const Login = ({
   setToken,
+  path,
 }: {
   setToken: (userToken: { token: string }) => void;
+  path?: string;
 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,7 +22,7 @@ const Login = ({
       });
       if (loginStatus === "ok") {
         setToken({ token: user });
-        window.location.href = "/dashboard";
+        window.location.href = path || "/dashboard";
       }
     } catch (error) {
       console.log(typeof setToken);
