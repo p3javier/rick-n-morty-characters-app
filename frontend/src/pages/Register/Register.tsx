@@ -1,5 +1,6 @@
 import React, { SyntheticEvent, useState } from "react";
 import { registerUser } from "../../services/registerUser/registerUser";
+import { loginUser } from "../../services/loginUser/loginUser";
 import InputBase from "../../components/InputBase/InputBase";
 
 const PasswordMismatch = () => <p>The passwords doesn&apos;t match</p>;
@@ -22,12 +23,17 @@ const Register = (props: any) => {
   const handleSubmit = async (event: SyntheticEvent) => {
     event.preventDefault();
     if (password === repeatPassword) {
-      const token = await registerUser({
+      const { registerStatus } = await registerUser({
         username,
         email,
         password,
       });
-      setToken(token);
+      if (registerStatus === "ok") {
+        const { loginStatus, user } = await loginUser({ email, password });
+        if (loginStatus === "ok") {
+          setToken({ token: user });
+        }
+      }
     } else {
       setError(true);
     }

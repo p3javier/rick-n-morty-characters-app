@@ -1,13 +1,8 @@
 import axios from "axios";
+import { ICredentials } from "../../types/credentialsInterface";
+import { AxiosResponse } from "../../types/axiosResponse";
 
-type AxiosResponse = {
-  status: number;
-  data: {
-    loginStatus: string;
-    user: string;
-  };
-};
-const loginUser = async (credentials: object) => {
+const loginUser = async (credentials: ICredentials) => {
   try {
     const { status, data }: AxiosResponse = await axios.post(
       "http://localhost:8080/api/login",

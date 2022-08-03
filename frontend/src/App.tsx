@@ -6,29 +6,33 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import { useToken } from "./hooks/useToken";
 import RequireAuth from "./components/RequireAuth/RequireAuth";
-import { useAuthSelector } from "./hooks/useAuth";
+import { useAuthSelector, useAuthDispatch } from "./hooks/useAuth";
+import { authenticate } from "./redux/slices/authSlice";
+import NavBar from "./features/NavBar/NavBar";
+import { isLoggedIn } from "./services/checkLogin/checkLogin";
+import LandingPage from "./pages/LandingPage/LandingPage";
 
 const App = () => {
   const isAuthenticated = useAuthSelector(
     (state) => state.authentication.value
   );
-  const { token } = useToken();
+  const dispatch = useAuthDispatch();
+
+  console.log("appauth", isAuthenticated);
+  const { token, setToken } = useToken();
   useEffect(() => {
     token;
+    isLoggedIn().then((status) => {
+      status ? dispatch(authenticate()) : false;
+    });
   }, []);
   return (
     <div className="wrapper">
-      <h1>Application</h1>
-      <RequireAuth>
-        <button>Logout</button>
-      </RequireAuth>
+      <NavBar isAuthenticated={isAuthenticated} />
+
       <BrowserRouter>
         <Route path="/" exact>
-          {isAuthenticated ? (
-            <Redirect to="/dashboard" />
-          ) : (
-            <Redirect to="/login" />
-          )}
+          {isAuthenticated ? <Redirect to="/dashboard" /> : <LandingPage />}
         </Route>
         <Route path="/dashboard" exact>
           <RequireAuth>
@@ -36,7 +40,11 @@ const App = () => {
           </RequireAuth>
         </Route>
         <Route path="/login" exact>
-          <Login />
+          {isAuthenticated ? (
+            <Redirect to="/dashboard" />
+          ) : (
+            <Login setToken={setToken} />
+          )}
         </Route>
         <Route path="/register" exact component={Register} />
       </BrowserRouter>

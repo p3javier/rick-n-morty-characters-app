@@ -4,7 +4,7 @@ import { authenticate } from "../redux/slices/authSlice";
 const useToken = () => {
   const dispatch = useAuthDispatch();
   const getToken: () => string = () => {
-    const tokenString = sessionStorage.getItem("token");
+    const tokenString = localStorage.getItem("token");
     if (tokenString) {
       const userToken = JSON.parse(tokenString);
       dispatch(authenticate());
@@ -15,7 +15,8 @@ const useToken = () => {
   const [token, setToken] = useState(getToken());
 
   const saveToken = (userToken: { token: string }) => {
-    sessionStorage.setItem("token", JSON.stringify(userToken));
+    console.log("llega aqui");
+    localStorage.setItem("token", JSON.stringify(userToken));
     setToken(userToken.token);
     dispatch(authenticate());
   };
