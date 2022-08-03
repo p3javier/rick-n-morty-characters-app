@@ -1,7 +1,4 @@
-export type AxiosResponse = {
+export interface AxiosResponse<Type> {
   status: number;
-  data: {
-    loginStatus: "ok" | "error";
-    user: string;
-  };
-};
+  data: Type;
+}

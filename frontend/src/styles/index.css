@@ -47,7 +47,9 @@ a {
   color: var(--color-primary);
   text-decoration: none;
 }
-
+a:hover {
+  cursor: pointer;
+}
 a:hover:not(.button) {
   opacity: 0.75;
 }

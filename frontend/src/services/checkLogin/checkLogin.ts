@@ -1,12 +1,13 @@
 import axios from "axios";
 import { AxiosResponse } from "../../types/axiosResponse";
+import { Login } from "../../types/loginInterface";
 const isLoggedIn = async () => {
   try {
     const token = localStorage.getItem("token");
 
     if (token) {
       const parsedToken = JSON.parse(token);
-      const { status, data }: AxiosResponse = await axios.post(
+      const { status, data }: AxiosResponse<Login> = await axios.post(
         "http://localhost:8080/api/login-check",
         parsedToken
       );

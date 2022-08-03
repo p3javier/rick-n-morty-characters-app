@@ -1,4 +1,6 @@
 @import "_grid.css";
+@import "_card.css";
+
 .App {
   text-align: center;
 }
@@ -74,4 +76,8 @@ textarea[type="text"] {
   transition: all 0.2s ease;
   display: block;
   width: 100%;
+}
+
+img {
+  border-radius: 5px;
 }
