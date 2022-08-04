@@ -1,6 +1,7 @@
 .character-card {
     margin: 5rem;
     overflow: hidden;
+    width: auto;
     
 }
 

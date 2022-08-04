@@ -4,9 +4,11 @@ import "./characterCardStyles.css";
 import { Link } from "react-router-dom";
 import AddFavorite from "../AddFavorite/AddFavorite";
 import Hide from "../../components/Hide/Hide";
+import { convertUrlToId } from "../../utils/convertUrlToId";
 
 const CharacterCard = (props: Character) => {
   const { name, image, url } = props;
+  const id = convertUrlToId(url);
   return (
     <div className="card character-card container">
       <div className="row">
@@ -14,12 +16,12 @@ const CharacterCard = (props: Character) => {
         <div className="col-8 parent">
           <div className="row">
             <h2 className="col-12">
-              <Link to={`/character/${url}`}>{name}</Link>
+              <Link to={`/character/${id}`}>{name}</Link>
             </h2>
           </div>
           <div className="row child">
-            <Hide md lg xl>
-              <Link className="details col-6" to={`/character/${url}`}>
+            <Hide mdUp>
+              <Link className="details col-6" to={`/character/${id}`}>
                 <div className="text-title">View details</div>
               </Link>
 
@@ -30,7 +32,25 @@ const CharacterCard = (props: Character) => {
                 </div>
               </div>
             </Hide>
-            <Hide sm>NUEVO</Hide>
+            <Hide sm>
+              <div className="container">
+                <div className="row">
+                  <Link
+                    className="details col"
+                    to={`/character/${id}`}
+                    style={{ maxWidth: "unset" }}
+                  >
+                    <div className="text-title">View details</div>
+                  </Link>
+                </div>
+                <div className="row">
+                  <div style={{ display: "flex" }}>
+                    <h4>Add to favorites</h4>
+                    <AddFavorite />
+                  </div>
+                </div>
+              </div>
+            </Hide>
           </div>
         </div>
       </div>
