@@ -11,15 +11,15 @@ import { authenticate } from "./redux/slices/authSlice";
 import NavBar from "./features/NavBar/NavBar";
 import { isLoggedIn } from "./services/checkLogin/checkLogin";
 import LandingPage from "./pages/LandingPage/LandingPage";
+import CharacterDetail from "./features/CharacterDetail/CharacterDetail";
 
 const App = () => {
   const isAuthenticated = useAuthSelector(
     (state) => state.authentication.value
   );
   const dispatch = useAuthDispatch();
-
-  console.log("appauth", isAuthenticated);
   const { token, setToken } = useToken();
+
   useEffect(() => {
     token;
     isLoggedIn().then((status) => {
@@ -27,6 +27,7 @@ const App = () => {
       status ? dispatch(authenticate()) : false;
     });
   }, []);
+
   return (
     <div className="wrapper">
       <NavBar isAuthenticated={isAuthenticated} />
@@ -48,6 +49,7 @@ const App = () => {
           )}
         </Route>
         <Route path="/register" exact component={Register} />
+        <Route path={"/character/:id"} component={CharacterDetail} />
       </BrowserRouter>
     </div>
   );
