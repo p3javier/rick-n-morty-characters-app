@@ -1,6 +1,7 @@
 .character-card {
     margin: 5rem;
     overflow: hidden;
+    
 }
 
 .character-card > * {
@@ -8,22 +9,40 @@
 }
 
 .details {
-    padding: 1rem;
+    max-width: fit-content;
+    padding: 0 2rem;
     font-size: x-large;
     color:black;
     border: 2px;
     border-color: black;
     border-radius: 5px;
     border-style: solid;
-    margin-left: 3rem;
     text-align: center;
-    display: block;
+    margin-top: 1rem;
 
 }
-@media screen and (max-width: 599px) {
+.text-title {
+    vertical-align: middle !important;
+}
+.parent {
+    display: flex;
+    flex-direction: column;
+}
+
+.child {
+    margin-top: auto;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 768px) {
     .character-card  {
-        margin: 1rem;
+        max-width: fit-content;
+        margin: 1rem 0rem;
         display: inline-grid;
+    }
+
+    .child {
+        max-height: 10rem;
     }
 
 }

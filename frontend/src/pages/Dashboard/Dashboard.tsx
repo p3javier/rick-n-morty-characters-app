@@ -15,7 +15,7 @@ const Dashboard = () => {
     getAllCharacters().then((response) => handleGetCharacters(response));
   }, []);
   return (
-    <div className="container">
+    <div className="container dashboard">
       <h1>List Of Characters</h1>
       <ul className="dashboard-list">
         {charactersList.map((character: Character) => {
