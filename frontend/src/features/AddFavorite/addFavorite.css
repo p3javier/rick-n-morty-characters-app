@@ -1,10 +1,4 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-  }
+
   .like-button {
     background: none;
     display: inline-block;
@@ -13,8 +7,9 @@ body {
     cursor: pointer;
   }
   .like-button::before {
-    font-size: 3em;
-    color: #000;
+    font-size: 4rem;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+    color: white;
     content: '♥';
     position: absolute;
     left: 50%;
@@ -22,7 +17,8 @@ body {
     transform: translate(-50%, -50%);
   }
   .like-button::after {
-    font-size: 3em;
+    font-size: 5.5rem;
+    text-shadow: none;
     color: #ff3252;
     content: '♥';
     position: absolute;
@@ -32,6 +28,7 @@ body {
     transition: transform 0.2s;
   }
   .like-button.liked::after {
+    text-shadow: none;
     transform: translate(-50%, -50%) scale(1.1);
   }
   
