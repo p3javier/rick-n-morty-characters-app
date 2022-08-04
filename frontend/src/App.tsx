@@ -23,6 +23,7 @@ const App = () => {
   useEffect(() => {
     token;
     isLoggedIn().then((status) => {
+      console.log("logged in", status);
       status ? dispatch(authenticate()) : false;
     });
   }, []);

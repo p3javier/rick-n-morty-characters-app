@@ -1,16 +1,29 @@
 .character-card {
     margin: 5rem;
     overflow: hidden;
-    display: flex;
 }
 
 .character-card > * {
     margin: 0rem 2rem;
 }
 
+.details {
+    padding: 1rem;
+    font-size: x-large;
+    color:black;
+    border: 2px;
+    border-color: black;
+    border-radius: 5px;
+    border-style: solid;
+    margin-left: 3rem;
+    text-align: center;
+    display: block;
+
+}
 @media screen and (max-width: 599px) {
     .character-card  {
         margin: 1rem;
+        display: inline-grid;
     }
 
 }

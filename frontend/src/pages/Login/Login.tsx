@@ -2,7 +2,7 @@ import React, { SyntheticEvent, useState } from "react";
 import "./styles/Login.css";
 import { loginUser } from "../../services/loginUser/loginUser";
 import InputBase from "../../components/InputBase/InputBase";
-
+import { Link } from "react-router-dom";
 const Login = ({
   setToken,
   path,
@@ -40,6 +40,7 @@ const Login = ({
           <button className="button" type="submit">
             Submit
           </button>
+          <Link to="/register">Create account</Link>
           {error ? <p>Email or password is incorrect</p> : null}
         </div>
       </form>

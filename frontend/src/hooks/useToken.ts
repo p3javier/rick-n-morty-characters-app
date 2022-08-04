@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { useAuthDispatch } from "./useAuth";
-import { authenticate } from "../redux/slices/authSlice";
+import { authenticate, deAuthenticate } from "../redux/slices/authSlice";
+import { isLoggedIn } from "../services/checkLogin/checkLogin";
 const useToken = () => {
   const dispatch = useAuthDispatch();
   const getToken: () => string = () => {
     const tokenString = localStorage.getItem("token");
     if (tokenString) {
       const userToken = JSON.parse(tokenString);
-      dispatch(authenticate());
+      isLoggedIn().then((status) =>
+        status ? dispatch(authenticate()) : dispatch(deAuthenticate())
+      );
       return userToken?.token;
     }
     return "";
