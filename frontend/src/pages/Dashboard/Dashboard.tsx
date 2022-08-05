@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getAllCharacters } from "../../services/getAllCharacters/getAllCharacters";
+import getAllCharacters from "../../services/getAllCharacters/getAllCharacters";
 import CharacterCard from "../../features/CharacterCard/CharacterCard";
 import { Character } from "../../types/characterInterface";
 import "./dashboardStyles.css";

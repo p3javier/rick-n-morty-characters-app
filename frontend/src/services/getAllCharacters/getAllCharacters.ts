@@ -18,4 +18,4 @@ const getAllCharacters = async () => {
   }
 };
 
-export { getAllCharacters };
+export default getAllCharacters;

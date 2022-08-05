@@ -20,7 +20,7 @@ const Login = ({
         email,
         password,
       });
-      if (loginStatus === "ok") {
+      if (loginStatus === "ok" && setToken) {
         setToken({ token: user });
         window.location.href = path || "/dashboard";
       }
