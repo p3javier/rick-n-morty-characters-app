@@ -11,6 +11,7 @@ const Register = (props: any) => {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
   const {
     setToken,
   }: {
@@ -22,6 +23,7 @@ const Register = (props: any) => {
   } = props;
   const handleSubmit = async (event: SyntheticEvent) => {
     event.preventDefault();
+    setSuccess(true);
     if (password === repeatPassword) {
       const { registerStatus } = await registerUser({
         username,
@@ -29,10 +31,7 @@ const Register = (props: any) => {
         password,
       });
       if (registerStatus === "ok") {
-        const { loginStatus, user } = await loginUser({ email, password });
-        if (loginStatus === "ok") {
-          setToken({ token: user });
-        }
+        setSuccess(true);
       }
     } else {
       setError(true);
@@ -40,19 +39,33 @@ const Register = (props: any) => {
   };
   return (
     <div className="login-wrapper container">
-      <h1>Please Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <InputBase type="name" setValue={setUserName} />
-        <InputBase type="email" setValue={setEmail} />
-        <InputBase type="password" setValue={setPassword} />
-        <InputBase type="password" setValue={setRepeatPassword} />
-        <div>
-          <button className="button" type="submit">
-            Submit
-          </button>
-          {error ? <PasswordMismatch /> : null}
-        </div>
-      </form>
+      {success ? (
+        <h1 id="success-message">You have been registered successfully!</h1>
+      ) : (
+        <>
+          <h1>Register</h1>
+          <form id="cy-register-form" onSubmit={handleSubmit}>
+            <InputBase id="cy-name" type="name" setValue={setUserName} />
+            <InputBase id="cy-email" type="email" setValue={setEmail} />
+            <InputBase
+              id="cy-password"
+              type="password"
+              setValue={setPassword}
+            />
+            <InputBase
+              id="cy-password-confirm"
+              type="password"
+              setValue={setRepeatPassword}
+            />
+            <div>
+              <button id="cy-submit" className="button" type="submit">
+                Submit
+              </button>
+              {error ? <PasswordMismatch /> : null}
+            </div>
+          </form>
+        </>
+      )}
     </div>
   );
 };

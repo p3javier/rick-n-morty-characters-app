@@ -6,9 +6,11 @@ type InputType = "password" | "email" | "name";
 const InputBase = ({
   setValue,
   type,
+  id,
 }: {
   setValue: SetStateType;
   type: InputType;
+  id?: string;
 }) => {
   // eslint-disable-next-line consistent-return
   const label = (type: InputType) => {
@@ -25,6 +27,7 @@ const InputBase = ({
     <label>
       <p>{label(type)}</p>
       <input
+        id={id}
         type={type === "name" ? "text" : type}
         onChange={(event) => setValue(event.target.value)}
         required
