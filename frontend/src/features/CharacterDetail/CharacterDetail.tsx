@@ -51,7 +51,9 @@ const CharacterDetail = () => {
                   console.log(index);
                   return (
                     <tr key={element}>
-                      <td>{element}</td>
+                      <td>
+                        <strong>{element}</strong>
+                      </td>
                       {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
                       {/* @ts-ignore */}
                       <td>{characterData[TABLE_ELEMENTS[index]]}</td>
@@ -59,12 +61,16 @@ const CharacterDetail = () => {
                   );
                 })}
                 <tr>
-                  <td>Location</td>
+                  <td>
+                    <strong>location</strong>
+                  </td>
 
                   <td>{characterData.location.name}</td>
                 </tr>
                 <tr>
-                  <td>Origin</td>
+                  <td>
+                    <strong>origin</strong>
+                  </td>
 
                   <td>{characterData.location.name}</td>
                 </tr>

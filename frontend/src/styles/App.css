@@ -1,5 +1,6 @@
 @import "_grid.css";
 @import "_card.css";
+@import "_tabs.css";
 
 .App {
   text-align: center;
@@ -21,7 +22,7 @@
 }
 
 .wrapper {
-  padding: 20px;
+  padding: 0 20px 20px 0;
   overflow: hidden;
 }
 

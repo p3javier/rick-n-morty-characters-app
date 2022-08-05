@@ -30,26 +30,27 @@ const App = () => {
 
   return (
     <div className="wrapper">
-      <NavBar isAuthenticated={isAuthenticated} />
-
       <BrowserRouter>
-        <Route path="/" exact>
-          {isAuthenticated ? <Redirect to="/dashboard" /> : <LandingPage />}
-        </Route>
-        <Route path="/dashboard" exact>
-          <RequireAuth setToken={setToken}>
-            <Dashboard />
-          </RequireAuth>
-        </Route>
-        <Route path="/login" exact>
-          {isAuthenticated ? (
-            <Redirect to="/dashboard" />
-          ) : (
-            <Login setToken={setToken} />
-          )}
-        </Route>
-        <Route path="/register" exact component={Register} />
-        <Route path={"/character/:id"} component={CharacterDetail} />
+        <NavBar isAuthenticated={isAuthenticated} />
+        <div style={{ paddingTop: "10rem" }}>
+          <Route path="/" exact>
+            {isAuthenticated ? <Redirect to="/dashboard" /> : <LandingPage />}
+          </Route>
+          <Route path="/dashboard" exact>
+            <RequireAuth setToken={setToken}>
+              <Dashboard />
+            </RequireAuth>
+          </Route>
+          <Route path="/login" exact>
+            {isAuthenticated ? (
+              <Redirect to="/dashboard" />
+            ) : (
+              <Login setToken={setToken} />
+            )}
+          </Route>
+          <Route path="/register" exact component={Register} />
+          <Route path={"/character/:id"} component={CharacterDetail} />
+        </div>
       </BrowserRouter>
     </div>
   );

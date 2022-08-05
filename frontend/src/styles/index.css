@@ -59,6 +59,88 @@ button {
   font-family: inherit;
 }
 
+.button:hover,
+[type="button"]:hover,
+[type="reset"]:hover,
+[type="submit"]:hover,
+button:hover {
+  opacity: 0.8;
+}
+
+.button:active,
+[type="button"]:active,
+[type="reset"]:active,
+[type="submit"]:active,
+button:active {
+  transform: scale(0.98);
+}
+
+.button.primary,
+.button.secondary,
+.button.dark,
+.button.error,
+.button.success,
+[type="submit"] {
+  color: #fff;
+  z-index: 1; /* hightlight from other button's border when grouped */
+  background-color: #000;
+  background-color: var(--color-primary);
+}
+
+.button.secondary {
+  background-color: var(--color-grey);
+}
+
+.button.dark {
+  background-color: var(--color-darkGrey);
+}
+
+.button.error {
+  background-color: var(--color-error);
+}
+
+.button.success {
+  background-color: var(--color-success);
+}
+
+.button.outline {
+  background-color: transparent;
+  border-color: var(--color-lightGrey);
+}
+
+.button.outline.primary {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.button.outline.secondary {
+  border-color: var(--color-grey);
+  color: var(--color-grey);
+}
+
+.button.outline.dark {
+  border-color: var(--color-darkGrey);
+  color: var(--color-darkGrey);
+}
+
+.button.clear {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--color-primary);
+}
+
+.button.icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.button.icon > img {
+  margin-left: 2px;
+}
+.button.icon-only {
+  padding: 1rem;
+}
+
 p {
   margin-top: 0;
 }

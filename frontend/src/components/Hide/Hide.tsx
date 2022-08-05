@@ -60,7 +60,20 @@ const Hide = (props: HideProps) => {
 
   const getSize: () => string = () => {
     const propString = Object.keys(mediaSize)[0];
-    const validValues = ["xs", "sm", "md", "lg", "xl", "mdUp"];
+    const validValues = [
+      "xs",
+      "sm",
+      "md",
+      "lg",
+      "xl",
+      "xsUp",
+      "mdUp",
+      "lgUp",
+      "smDown",
+      "mdDown",
+      "lgDown",
+      "xlDown",
+    ];
     if (validValues.includes(propString)) {
       return propString;
     }
