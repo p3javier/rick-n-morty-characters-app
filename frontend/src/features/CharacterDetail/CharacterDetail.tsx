@@ -3,17 +3,19 @@ import { getCharacter } from "../../services/getCharacter/getCharacter";
 import { Character } from "../../types/characterInterface";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import { convertUrlToId } from "../../utils/convertUrlToId";
+import { useLocation } from "react-router-dom";
 const TABLE_ELEMENTS: readonly string[] = ["status", "species", "gender"];
 
 const CharacterDetail = () => {
   const [characterData, setCharacterData] = useState<Character>();
   const [error, setError] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     (async () => {
       try {
         const { status, data } = await getCharacter(
-          convertUrlToId(window.location.href)
+          convertUrlToId(location.pathname)
         );
         console.log("status", status);
         console.log("data", data);

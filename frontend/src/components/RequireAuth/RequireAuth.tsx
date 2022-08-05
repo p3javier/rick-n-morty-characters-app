@@ -1,6 +1,8 @@
 import React from "react";
 import { useAuthSelector } from "../../hooks/useAuth";
 import Login from "../../pages/Login/Login";
+import { useLocation } from "react-router-dom";
+
 const RequireAuth = ({
   children,
   setToken,
@@ -11,13 +13,13 @@ const RequireAuth = ({
   const isAuthenticated = useAuthSelector(
     (state) => state.authentication.value
   );
-  console.log("requireauth", isAuthenticated);
+  const location = useLocation();
   return isAuthenticated ? (
     children
   ) : (
     <>
       <h1>Please login to see this page</h1>
-      <Login setToken={setToken} path={window.location.pathname} />
+      <Login setToken={setToken} path={location.pathname} />
     </>
   );
 };
