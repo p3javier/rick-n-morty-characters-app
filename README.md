@@ -25,7 +25,7 @@ Also this has Jest built in for running tests.
 - **@testing-library/react (frontend)**: For helping with the tests. This library helps with rendering components in isolation and testing their behavior. The philosophy is *tests should resemble the way your app mean to be used*.
 - **Express (backend)**: As server for the auth API in this case.
 - **MongoDB (backend)**: General purpose document based database. Mandatory requirement too.
-- **Mongoose**: Popular ORM used in combination with MongoDB.
+- **Mongoose (backend)**: Popular ORM used in combination with MongoDB.
 - **bcryptjs**: to hash the passwords  so they are stored in a secure way in the database.
 - **jsonwebtoken**: to generate tokens and verify them. This allow control API access.
 - **nodemon**: nodemon is a tool that helps develop Node.js based applications by automatically restarting the node application when file changes in the directory are detected.

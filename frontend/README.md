@@ -5,17 +5,10 @@ I've decided to use CRA in order to save time with the initial project setup.
 
 ## Libraries Used
 
-This project uses the following set of libraries:
+This project uses the following set of libraries not mentioned in the main project's README.md:
 
-- **React**: As the frontend visualization framework.
-- **Redux**: For global state management.
-- **Jest**: As the test runner.
-- **Testing Library**: Utility library to make easier write tests that resemble how the app is going to be used.
-- **TypeScript**: For type safety and it's useful as documentation and to reduce the ammount of tests needed.
-- **Axios**: For REST API handling, it's like the native *Fetch API* but on steroids.
-- **ESLint**: As the linter. For static analysis of code and to enforce consistent code style in the app.
+- **Jest**: As the test runner, this is provided internally by Create React App.
 - **Prettier**: For enhanced code formatting.
-
 
 ## Available Scripts
 
@@ -29,11 +22,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
@@ -44,7 +32,22 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### `npm test`
 
+To run unit and integration tests. Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run coverage`
+
+To get tests coverage metrics.
+
+### `npm run lint` && `npm run lint:fix`
+
+To run the lint in the project and allow ESLint to fix the error automatically when possible, respectively.
+
+### `npm run cy`
+
+To run e2e tests with Cypress.
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
