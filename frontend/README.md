@@ -5,17 +5,10 @@ I've decided to use CRA in order to save time with the initial project setup.
 
 ## Libraries Used
 
-This project uses the following set of libraries:
+This project uses the following set of libraries not mentioned in the main project's README.md:
 
-- **React**: As the frontend visualization framework.
-- **Redux**: For global state management.
-- **Jest**: As the test runner.
-- **Testing Library**: Utility library to make easier write tests that resemble how the app is going to be used.
-- **TypeScript**: For type safety and it's useful as documentation and to reduce the ammount of tests needed.
-- **Axios**: For REST API handling, it's like the native *Fetch API* but on steroids.
-- **ESLint**: As the linter. For static analysis of code and to enforce consistent code style in the app.
+- **Jest**: As the test runner, this is provided internally by Create React App.
 - **Prettier**: For enhanced code formatting.
-
 
 ## Available Scripts
 
