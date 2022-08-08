@@ -1,0 +1,16 @@
+FROM node:16-alpine3.15 AS deps
+
+WORKDIR /app
+COPY ./frontend/package*.json .
+RUN npm install
+
+
+# Rebuild source code only when needed
+FROM node:16-alpine3.15 AS runner
+
+WORKDIR /app
+
+COPY ./frontend .
+COPY --from=deps /app/node_modules ./node_modules
+
+CMD ["npm", "start"]
