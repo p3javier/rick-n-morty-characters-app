@@ -14,7 +14,7 @@ const APP_SECRET = process.env.SECRET || "tesst123";
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect("mongodb://localhost:27017/rick-and-morty-auth");
+mongoose.connect("mongodb://mongodb:27018/rick-and-morty-auth");
 
 app.post("/api/register", async (req, res) => {
   const { name, email, password } = req.body;

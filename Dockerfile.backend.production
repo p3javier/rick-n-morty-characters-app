@@ -1,0 +1,27 @@
+FROM node:16-alpine3.15 AS deps
+
+WORKDIR /app
+COPY ./backend .
+RUN npm install
+
+
+# Rebuild source code only when needed
+FROM node:16-alpine3.15 AS builder
+
+
+WORKDIR /app
+
+COPY ./backend .
+COPY --from=deps /app/node_modules ./node_modules
+
+RUN npm run build
+
+
+# Production image
+FROM node:16-alpine3.15 AS runner
+WORKDIR /app
+
+
+COPY --from=backend-builder /app/dist ./
+
+CMD ["node", "run", "server.js"]
