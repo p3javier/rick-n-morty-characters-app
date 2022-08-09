@@ -3,12 +3,28 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 I've decided to use CRA in order to save time with the initial project setup.
 
-## Libraries Used
+## Libraries & Technologies Used
+
+### Libraries
 
 This project uses the following set of libraries not mentioned in the main project's README.md:
 
 - **Jest**: As the test runner, this is provided internally by Create React App.
 - **Prettier**: For enhanced code formatting.
+
+### Technologies
+
+This section is more to explain why I've taken some technical decisions rather than show what technologies I've used.
+
+#### Token Storage
+
+I've decided to use `localStorage` API instead of traditional cookies to store session tokens for few reasons:
+
+- Cookies are not encrypted.
+- Cookies are sent in every request to the server even when you don't need them.
+
+- With `localStorage` API you can store way more data.
+- With `localStorage` you have explicit control of what HTTP request send the token to the server.
 
 ## Available Scripts
 
